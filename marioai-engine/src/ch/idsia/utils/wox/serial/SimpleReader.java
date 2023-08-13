@@ -370,8 +370,8 @@ public Object readObject(Element xob, Object id)
         // PrivilegedAction action
 
         // put the forced call in here!!!
-        // Constructor cons = type.getDeclaredConstructor(new Class[0]);
-        Constructor cons = Util.forceDefaultConstructor(type);
+         Constructor cons = type.getDeclaredConstructor(new Class[0]);
+        //Constructor cons = Util.forceDefaultConstructor(type);
         cons.setAccessible(true);
         // System.out.println("Default Constructor: " + cons);
         Object ob = makeObject(cons, new Object[0], id);

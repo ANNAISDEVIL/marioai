@@ -6,7 +6,7 @@ option java_package = "de.lmu.parl.proto";
 option java_outer_classname = "MarioProtos";
 
 message MarioMessage {
-  enum Type { 
+  enum Type {
     INIT = 0;
     ACTION = 1;
     STATE = 2;

@@ -27,7 +27,7 @@
 
 package ch.idsia.utils.wox.serial;
 
-import sun.reflect.ReflectionFactory;
+//import sun.reflect.ReflectionFactory;
 
 import java.lang.reflect.Constructor;
 import java.security.AccessController;
@@ -47,9 +47,9 @@ public class Util implements Serial
 /**
  * reflection factory for forcing default constructors
  */
-private static final ReflectionFactory reflFactory = (ReflectionFactory)
-        AccessController.doPrivileged(
-                new ReflectionFactory.GetReflectionFactoryAction());
+//private static final ReflectionFactory reflFactory = (ReflectionFactory)
+//        AccessController.doPrivileged(
+//                new ReflectionFactory.GetReflectionFactoryAction());
 
 
 public static void main(String[] args)
@@ -63,14 +63,14 @@ public static void main(String[] args)
  * despite appearences can be used to construct objects
  * of the specified type!!!of first non-serializable
  */
-public static Constructor forceDefaultConstructor(Class cl) throws Exception
-{
-    Constructor cons = Object.class.getDeclaredConstructor(new Class[0]);
-    cons = reflFactory.newConstructorForSerialization(cl, cons);
-    cons.setAccessible(true);
-    // System.out.println("Cons: " + cons);
-    return cons;
-}
+//public static Constructor forceDefaultConstructor(Class cl) throws Exception
+//{
+//    Constructor cons = Object.class.getDeclaredConstructor(new Class[0]);
+//    cons = reflFactory.newConstructorForSerialization(cl, cons);
+//    cons.setAccessible(true);
+//    // System.out.println("Cons: " + cons);
+//    return cons;
+//}
 
 public static boolean stringable(Object o)
 {

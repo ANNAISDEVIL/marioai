@@ -1,5 +1,5 @@
 import os
-from d3rlpy.dataset import MDPDataset
+from d3rlpy.dataset import MDPDataset, ReplayBuffer, InfiniteBuffer
 
 
 def getDataset():
@@ -9,7 +9,8 @@ def getDataset():
         if entry.path.endswith(".h5") and entry.is_file():
             print(entry.path)
             if dataset is not None:
-                dataset.extend(MDPDataset.load(entry.path))
+                dataset = ReplayBuffer.load(entry.path, InfiniteBuffer())
+                # dataset.append(ReplayBuffer.load(entry.path, InfiniteBuffer()))
             else:
-                dataset = MDPDataset.load(entry.path)
+                dataset = ReplayBuffer.load(entry.path, InfiniteBuffer())
     return dataset

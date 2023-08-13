@@ -8,7 +8,7 @@ from .mario_pb2 import MarioMessage, Action
 
 def serialize(msg:MarioMessage):
     """
-    adds VarintBytes: a message header indicating the length of 
+    adds VarintBytes: a message header indicating the length of
                     the following message
     and serializes the message to a byte array
     """
@@ -32,7 +32,7 @@ def create_reset_message():
 
 class ProtobufSocket:
     """
-    A wrapper for a TCP socket which provides methods to send and receive 
+    A wrapper for a TCP socket which provides methods to send and receive
     protobuf messages of our MarioMessage protobuf specification.
     """
     def __init__(self, enabled_actions):
@@ -49,14 +49,14 @@ class ProtobufSocket:
     def send(self, msg:MarioMessage):
         self.sock.send(serialize(msg))
 
-    def send_init(self, difficulty, seed:int, 
+    def send_init(self, difficulty, seed:int,
             rf_width:int, rf_height:int, level_length:int,
             level_path:str, render:bool):
         """ send an INIT message """
 
         msg = MarioMessage()
         msg.type = MarioMessage.Type.INIT
-        msg.init.render = render 
+        msg.init.render = render
         msg.init.difficulty = difficulty
         msg.init.seed = seed
         msg.init.r_field_w = rf_width
