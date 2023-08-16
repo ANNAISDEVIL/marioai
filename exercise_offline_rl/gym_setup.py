@@ -42,4 +42,4 @@ class Env:
                             reward_settings=reward_settings,
                             enabled_actions=self.all_actions,
                             rf_width=20, rf_height=10,
-                            port=8080)
+                            port=port)

@@ -155,7 +155,9 @@ class MarioEnv(gym.Env):
         self.socket.send_reset()
         state_msg = self.socket.receive()
         self.__reset_cached_data(state_msg)
-        return self.__extract_observation(state_msg)
+        info = self.__extract_info(state_msg)
+
+        return self.__extract_observation(state_msg),info
 
     def step(self, action: int):
         """
@@ -174,12 +176,12 @@ class MarioEnv(gym.Env):
 
         observation = self.__extract_observation(state_msg)
         reward = self.__extract_reward(state_msg)
-        done = self.__extract_done(state_msg)
+        terminated = self.__extract_done(state_msg)
         info = self.__extract_info(state_msg)
-
+        truncated = False 
         self.__update_cached_data(state_msg)
 
-        return observation, reward, done, info
+        return observation, reward, terminated, truncated, info
 
     def __reset_cached_data(self, res:MarioMessage):
         """
