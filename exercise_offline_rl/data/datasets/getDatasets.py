@@ -9,8 +9,9 @@ def getDataset():
         if entry.path.endswith(".h5") and entry.is_file():
             print(entry.path)
             if dataset is not None:
-                dataset = ReplayBuffer.load(entry.path, InfiniteBuffer())
-                # dataset.append(ReplayBuffer.load(entry.path, InfiniteBuffer()))
+                # dataset = ReplayBuffer.load(entry.path, InfiniteBuffer())
+                for episode in ReplayBuffer.load(entry.path, InfiniteBuffer()).episodes:
+                    dataset.append_episode(episode)
             else:
                 dataset = ReplayBuffer.load(entry.path, InfiniteBuffer())
     return dataset
